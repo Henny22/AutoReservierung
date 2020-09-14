@@ -20,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -36,6 +38,8 @@ public class LoginSystemController implements Initializable {
     private Button buttonLogin;
     @FXML
     private Label labelStatus;
+    @FXML
+    private Button buttonCancel;
 
     /**
      * Initializes the controller class.
@@ -106,6 +110,32 @@ public class LoginSystemController implements Initializable {
     public void loginMainMenu(){
         try{
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));       
+        Main.getStage().setScene(new Scene(root,1050,576));
+        }catch(Exception e){
+          e.printStackTrace();
+          e.getCause();
+        }
+    }
+    
+    public void showResetPassword(){
+        try{
+          
+            Parent root = FXMLLoader.load(getClass().getResource("PasswordReset.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("My New Stage Title");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 400, 310));
+            stage.show();
+
+        }catch(Exception e){
+          e.printStackTrace();
+          e.getCause();
+        }
+    }
+    
+    public void showRegistry(){
+        try{ 
+        Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));
         Main.getStage().setScene(new Scene(root, 520, 400));
         }catch(Exception e){
           e.printStackTrace();
@@ -113,4 +143,8 @@ public class LoginSystemController implements Initializable {
         }
     }
     
+     public void cancelButtonOnAction(ActionEvent event){
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
+    }
 }
