@@ -15,10 +15,24 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller implements Initializable {
+    
+     DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
 
     @FXML
     private VBox pnItems = null;
@@ -54,6 +68,30 @@ public class Controller implements Initializable {
 
     @FXML
     private Pane pnlMenus;
+    
+    @FXML
+    private TableView <ModelTable>tableTableview;
+    
+    @FXML
+    private TableColumn <ModelTable,String> tableColumnOrderID;
+    
+    @FXML
+    private TableColumn <ModelTable,String> tableColumnFirstname;
+    
+    @FXML
+    private TableColumn <ModelTable,String> tableColumnLastname;
+    
+    @FXML
+    private TableColumn <ModelTable,String> tableColumnModel;
+    
+    @FXML
+    private TableColumn <ModelTable,String> tableColumnLoanLength;
+    
+    @FXML
+    private Label labelTotalOrders;
+    
+    ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+    
     /*
     @FXML
     private Label labelID;
@@ -72,9 +110,28 @@ public class Controller implements Initializable {
       */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setHeaderData();
        
+       
+        tableColumnOrderID.setCellValueFactory(new PropertyValueFactory<>("Order_ID"));
+        tableColumnFirstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        tableColumnLastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        tableColumnModel.setCellValueFactory(new PropertyValueFactory<>("model"));
+        tableColumnLoanLength.setCellValueFactory(new PropertyValueFactory<>("loanlength"));
         
-        Node[] nodes = new Node[6];
+        try {
+            ResultSet rs = connectDB.createStatement().executeQuery("Select * from rent_orders");
+            
+            while (rs.next()){
+                oblist.add(new ModelTable(rs.getString("Order_ID"),rs.getString("Firstname"),rs.getString("Lastname"),rs.getString("Model"), rs.getString("Loan_Length")));
+            }
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        tableTableview.setItems(oblist);
+        
+        
+        /*Node[] nodes = new Node[6];
         for (int i = 0; i < nodes.length; i++) {
             try {
                 final int j = i;
@@ -90,9 +147,11 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
     }
+    
+    
 
 
     public void handleClicks(ActionEvent actionEvent) {
@@ -117,5 +176,29 @@ public class Controller implements Initializable {
     
     public void getOrderData(){
         
+    }
+    
+    public void setHeaderData(){
+        String numberOrders="";
+        try {
+            ResultSet rs = connectDB.createStatement().executeQuery("SELECT COUNT(*) FROM rent_orders");
+            while(rs.next()){
+                numberOrders = rs.getString("COUNT(*)");
+            }
+            
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        labelTotalOrders.setText(numberOrders);
+    }
+    
+    public void backToLoginOnAction(){
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("LoginSystem.fxml"));
+        Main.getStage().setScene(new Scene(root, 520, 400));
+        }catch(Exception e){
+          e.printStackTrace();
+          e.getCause();
+        }
     }
 }

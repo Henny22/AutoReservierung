@@ -4,7 +4,7 @@
 -fx-text-fill : #e7e5e5;
 }
 .button:hover{
--fx-background-color : #10165F;
+-fx-background-color : #86879c;
 }
 .button:pressed
 {
@@ -40,3 +40,37 @@
 .scroll-pane > .corner {
     -fx-background-color: black;
 }
+
+.table-view .column-header{
+    
+    -fx-text-fill: #e7e5e5;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+     -fx-font-size: 14;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell{
+    -fx-background-color: #02030A;
+    -fx-text-fill: #e7e5e5;
+    -fx-alignment: center;
+}
+
+
+.table-row-cell:selected .table-cell {  
+    -fx-opacity: 0.9;
+}
+.table-row-cell:selected {
+     -fx-font-weight: bold;
+}
+
+.table-view .column-header * {
+    -fx-background-color: #02030A;
+}
+
