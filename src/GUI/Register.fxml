@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RegisterController">
    <top>
-      <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #E96151;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #525252;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="44.0" fitWidth="57.0" layoutX="77.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -62,7 +62,6 @@
     -fx-alignment: center;
 }
 
-
 .table-row-cell:selected .table-cell {  
     -fx-opacity: 0.9;
 }

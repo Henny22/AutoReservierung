@@ -86,8 +86,8 @@ public class RegisterController implements Initializable {
         String password = textFieldPassword.getText();
         // int randomNum = ThreadLocalRandom.current().nextInt(1000, 55000 + 1);
         
-        String checkStuffNumberInStaff = "SELECT id_staff from staff where id_staff="+staffNumber+"";
-        String checkStuffNumberInUserData = "SELECT staffID from userdata where staffID="+staffNumber+"";
+        String checkStuffNumberInStaff = "SELECT IDStaff from staffdata where IDStaff="+staffNumber+"";
+        String checkStuffNumberInUserData = "SELECT IDStaff from staffaccounts where IDStaff="+staffNumber+"";
         
         try{
            Statement statement = connectDB.createStatement(); 
@@ -100,8 +100,8 @@ public class RegisterController implements Initializable {
            existNumberInUserData = queryResultNumberInUserData.next();
            
            if (existNumberInStuff ==true && existNumberInUserData == false){
-               String insertFields ="INSERT INTO userdata(Username, Password, staffID) VALUES ('";
-               String insertValues =username + "','"+ password +"','"+ staffNumber +"')";
+               String insertFields ="INSERT INTO staffaccounts( IDStaff, Username, Password) VALUES ('";
+               String insertValues =staffNumber + "','"+ username +"','"+ password +"')";
                String insertToRegister = insertFields + insertValues;
                statement3.executeUpdate(insertToRegister);
                labelAlreadyRegistered.setText("User has been registered successfully. Try to login now!");

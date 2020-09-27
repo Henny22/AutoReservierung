@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: #05071F;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SelectedReservationController">
+   <children>
+      <Label layoutX="100.0" layoutY="14.0" text="Reservations Details" textFill="#e7e5e5">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="61.0" prefHeight="19.0" prefWidth="84.0" text="IDReservation:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="325.0" prefHeight="19.0" prefWidth="42.0" text="Brand:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="350.0" prefHeight="19.0" prefWidth="42.0" text="Model:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="88.0" prefHeight="19.0" prefWidth="66.0" text="Firstname:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="114.0" prefHeight="19.0" prefWidth="66.0" text="Lastname:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="139.0" prefHeight="19.0" prefWidth="36.0" text="Email:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="166.0" prefHeight="19.0" prefWidth="58.0" text="Birthdate:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="191.0" prefHeight="19.0" prefWidth="42.0" text="Street:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="218.0" prefHeight="19.0" prefWidth="28.0" text="City:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="243.0" prefHeight="19.0" prefWidth="66.0" text="Postalcode:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="271.0" prefHeight="19.0" prefWidth="36.0" text="State:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="297.0" prefHeight="19.0" prefWidth="52.0" text="Country:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="376.0" prefHeight="19.0" prefWidth="52.0" text="Amount:" textFill="#e7e5e5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelIDReservation" layoutX="126.0" layoutY="62.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelFirstname" layoutX="126.0" layoutY="89.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelLastname" layoutX="126.0" layoutY="115.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelEmail" layoutX="126.0" layoutY="140.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelBirthdate" layoutX="126.0" layoutY="167.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelStreet" layoutX="126.0" layoutY="192.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelCity" layoutX="126.0" layoutY="219.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelPostalcode" layoutX="126.0" layoutY="244.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelstate" layoutX="126.0" layoutY="272.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelBrand" layoutX="126.0" layoutY="327.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label layoutX="126.0" layoutY="299.0" prefHeight="17.0" prefWidth="179.0" />
+      <Label fx:id="labelModel" layoutX="126.0" layoutY="352.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelAmount" layoutX="126.0" layoutY="378.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Label fx:id="labelCountry" layoutX="126.0" layoutY="299.0" prefHeight="17.0" prefWidth="179.0" text="..." textFill="#e7e5e5" />
+      <Button fx:id="buttonBack" layoutX="149.0" layoutY="402.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #525252;" text="Back" />
+   </children>
+</AnchorPane>

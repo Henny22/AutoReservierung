@@ -11,54 +11,54 @@ package GUI;
  */
 public class ModelTable {
     
-    String Order_ID, firstname, lastname, model, loanlength;
+    String IDReservation, IDCar, IDCus, Amount, IDLoc;
     
-    public ModelTable(String Order_ID, String firstname, String lastname, String model, String loanlength){
-        this.Order_ID = Order_ID;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.model = model;
-        this.loanlength = loanlength;
+    public ModelTable(String IDReservation, String IDCar, String IDCus, String Amount, String IDLoc){
+        this.IDReservation = IDReservation;
+        this.IDCar = IDCar;
+        this.IDCus = IDCus;
+        this.Amount = Amount;
+        this.IDLoc = IDLoc;
     }
     
-    public String getOrder_ID(){
-        return Order_ID;
+    public String getIDReservation(){
+        return IDReservation;
     }
     
-    public void setId(String id){
-        this.Order_ID= Order_ID;
+    public void setIDReservation(String IDReservation){
+        this.IDReservation= IDReservation;
     }
     
-    public String getFirstname(){
-        return firstname;
+    public String getIDCar(){
+        return IDCar;
     }
     
-    public void setFirstname(String firstname){
-        this.firstname= firstname;
+    public void setIDCar(String IDCar){
+        this.IDCar= IDCar;
     }
     
-    public String getLastname(){
-        return lastname;
+    public String getIDCus(){
+        return IDCus;
     }
     
-    public void setLastname(String lastname){
-        this.lastname= lastname;
+    public void setIDCus(String IDCus){
+        this.IDCus= IDCus;
     }
     
-    public String getModel(){
-        return model;
+    public String getAmount(){
+        return Amount;
     }
     
-    public void setModel(String model){
-        this.model= model;
+    public void setAmount(String Amount){
+        this.Amount= Amount;
     }
     
-    public String getLoanlength(){
-        return loanlength;
+    public String getIDLoc(){
+        return IDLoc;
     }
     
-    public void setLoanlength(String loanlength){
-        this.loanlength= loanlength;
+    public void setIDLoc(String IDLoc){
+        this.IDLoc= IDLoc;
     }
     
 }

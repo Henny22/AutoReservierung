@@ -12,14 +12,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginSystemController">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="217.0" style="-fx-background-color: #d14c13;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="217.0" style="-fx-background-color: #525252;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="82.0" fitWidth="115.0" layoutX="72.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/icons8_car_64px.png" />
+                  <Image url="@../Images/icons8_car_64px_1.png" />
                </image>
             </ImageView>
-            <Label layoutX="32.0" layoutY="144.0" prefHeight="36.0" prefWidth="163.0" text="Sad Car Rent ">
+            <Label layoutX="32.0" layoutY="144.0" prefHeight="36.0" prefWidth="163.0" text="Sad Car Rent " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

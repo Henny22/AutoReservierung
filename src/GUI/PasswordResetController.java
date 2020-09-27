@@ -79,7 +79,7 @@ public class PasswordResetController implements Initializable {
          int staffNumber = Integer.parseInt(textFieldPersonnelNumber.getText());
         String username = textFieldUsername.getText();
         
-        String checkData = "SELECT staffID,username from userdata where staffID="+staffNumber+" && "+" Username='"+username+"'";
+        String checkData = "SELECT IDStaff,Username from staffaccounts where IDStaff="+staffNumber+" && "+" Username='"+username+"'";
         
          
         try {
@@ -92,7 +92,7 @@ public class PasswordResetController implements Initializable {
            
             if (checkExistance == true){
                 String newGeneratedPassword = generateRandomString(5);   
-                String setNewPassword  ="Update userdata SET Password='"+newGeneratedPassword+"' WHERE staffID="+staffNumber+" && Username='"+username+"'";
+                String setNewPassword  ="Update staffaccounts SET Password='"+newGeneratedPassword+"' WHERE IDStaff="+staffNumber+" && Username='"+username+"'";
                 
                 statement2.executeUpdate(setNewPassword);
                 labelShowNewPassword.setText("Your password has been changed. New Password: "+newGeneratedPassword);
