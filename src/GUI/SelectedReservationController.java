@@ -71,7 +71,7 @@ public class SelectedReservationController implements Initializable {
         try {
             Statement statement = connectDB.createStatement();
             labelIDReservation.setText(String.valueOf(Controller.getID()));
-            labelAmount.setText(String.valueOf(Controller.getAmount()));
+            labelAmount.setText(String.valueOf(Controller.getAmount())+" $");
             ResultSet queryResultDataCar = statement.executeQuery(getDataCar);
               while (queryResultDataCar.next()){
               labelBrand.setText( queryResultDataCar.getString(1));

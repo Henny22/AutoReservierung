@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -84,22 +85,23 @@ public class Controller implements Initializable {
     private TableColumn <ModelTable,String> tableColumnOrderID;
     
     @FXML
-    private TableColumn <ModelTable,String> tableColumnFirstname;
-    
-    @FXML
     private TableColumn <ModelTable,String> tableColumnLastname;
     
     @FXML
-    private TableColumn <ModelTable,String> tableColumnModel;
+    private TableColumn <ModelTable,String> tableColumnBrand;
     
     @FXML
-    private TableColumn <ModelTable,String> tableColumnLoanLength;
+    private TableColumn <ModelTable,String> tableColumnLocation;
+    
+    @FXML
+    private TableColumn <ModelTable,String> tableColumnAmount;
     
     @FXML
     private Label labelTotalOrders;
     
     @FXML
     private TextField filterField;
+    
     
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
     
@@ -140,52 +142,28 @@ public class Controller implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        
         setHeaderData();
        
         tableColumnOrderID.setCellValueFactory(new PropertyValueFactory<>("IDReservation"));
-        tableColumnFirstname.setCellValueFactory(new PropertyValueFactory<>("IDCar"));
-        tableColumnLastname.setCellValueFactory(new PropertyValueFactory<>("IDCus"));
-        tableColumnModel.setCellValueFactory(new PropertyValueFactory<>("Amount"));
-        tableColumnLoanLength.setCellValueFactory(new PropertyValueFactory<>("IDLoc"));
+        tableColumnLastname.setCellValueFactory(new PropertyValueFactory<>("Lastname"));
+        tableColumnBrand.setCellValueFactory(new PropertyValueFactory<>("Brand"));
+        tableColumnLocation.setCellValueFactory(new PropertyValueFactory<>("Location"));
+        tableColumnAmount.setCellValueFactory(new PropertyValueFactory<>("Amount"));
         
         try {
-            ResultSet rs = connectDB.createStatement().executeQuery("Select * from reservations");
+            ResultSet rs = connectDB.createStatement().executeQuery("select t1.IDReservation, t2.Lastname, t3.Brand, t4.City,t1.Amount,t1.IDCar,t1.IDCus,t1.IDLoc from reservations t1 left join customers t2 on t1.IDCus = t2.IDCus left join cars t3 on t1.IDCar = t3.IDCar left join locations t4 on t1.IDLoc = t4.IDLoc");
             
             while (rs.next()){
-                oblist.add(new ModelTable(rs.getString("IDReservation"),rs.getString("IDCar"),rs.getString("IDCus"),rs.getString("Amount"), rs.getString("IDLoc")));
+                oblist.add(new ModelTable(rs.getString("IDReservation"),rs.getString("Lastname"),rs.getString("Brand"),rs.getString("City"), rs.getString("Amount"), rs.getString("IDCar"), rs.getString("IDCus"), rs.getString("IDLoc")));
             }
+            
         } catch (Exception e) {
            e.printStackTrace();
         }
         tableTableview.setItems(oblist);
         
-        
-       /*FilteredList<ModelTable> filteredData = new FilteredList<>(dataList, b-> true);
-   
-       
-       filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(employee -> {
-				// If filter text is empty, display all persons.
-								
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-				
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-				
-				if (employee.getIDReservation().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} else if (employee.getIDCar().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-					return true; // Filter matches last name.
-				}
-				else if (String.valueOf(employee.getSalary()).indexOf(lowerCaseFilter)!=-1)
-				     return true;
-				     else  
-				    	 return false; // Does not match.
-			});
-		});
- */
 
     }
     
@@ -240,25 +218,8 @@ public class Controller implements Initializable {
     
     
     public void checkTableClick(MouseEvent event){
-        /*if(event.getButton().equals(MouseButton.PRIMARY)){
-            int index = tableTableview.getSelectionModel().getSelectedIndex();
-            String ausgabe = tableTableview.getItems().get(index).toString();
-            
-            System.out.println(ausgabe);
-        }*/
-        
-        /*ObservableList selectedCells = tableTableview.getSelectionModel().getSelectedCells();
-
-        TablePosition tablePosition = (TablePosition) selectedCells.get(0);
-        String val = tablePosition.getTableColumn().getCellData(tablePosition.getRow()).toString();
-        System.out.println("Selected Value" + val);*/
-        
-                /*TableViewSelectionModel selectionModel = tableTableview.getSelectionModel();
-                ObservableList selectedCells = selectionModel.getSelectedCells();
-                TablePosition tablePosition = (TablePosition) selectedCells.get(0);
-                Object val = tablePosition.getTableColumn().getCellData(0);
-                System.out.println("Selected value IS :" + val);*/
-                
+     
+              
                 ObservableList<ModelTable> tableList;
                 tableList = tableTableview.getSelectionModel().getSelectedItems();
                 IDReservation =  Integer.parseInt(tableList.get(0).getIDReservation());
@@ -283,9 +244,51 @@ public class Controller implements Initializable {
           e.printStackTrace();
           e.getCause();
         }
+            
     }
     
-     
-       
-  }
+    public void searchBarOnAction(ActionEvent e){    
+FilteredList<ModelTable> filteredData = new FilteredList<>(oblist, b-> true);
+       filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(ModelTable -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (ModelTable.getIDReservation().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} else if (ModelTable.getLastname().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; 
+				}
+                                else if (ModelTable.getBrand().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; 
+				}else if (ModelTable.getLocation().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; 
+				}
+				else if (String.valueOf(ModelTable.getAmount()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+
+                // 3. Wrap the FilteredList in a SortedList. 
+		SortedList<ModelTable> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(tableTableview.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		tableTableview.setItems(sortedData);
+
+    }
+}
+    
+  
+  
 

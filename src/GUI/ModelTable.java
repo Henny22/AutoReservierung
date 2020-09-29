@@ -11,14 +11,25 @@ package GUI;
  */
 public class ModelTable {
     
-    String IDReservation, IDCar, IDCus, Amount, IDLoc;
+    String IDReservation, Lastname, Brand, Location, Amount, IDCar, IDCus, IDLoc;
     
-    public ModelTable(String IDReservation, String IDCar, String IDCus, String Amount, String IDLoc){
+    public ModelTable(String IDReservation, String Lastname, String Brand, String Location, String Amount,String IDCar, String IDCus, String IDLoc){
         this.IDReservation = IDReservation;
+        this.Lastname = Lastname;
+        this.Brand = Brand;
+        this.Location = Location;
+        this.Amount = Amount;
         this.IDCar = IDCar;
         this.IDCus = IDCus;
-        this.Amount = Amount;
         this.IDLoc = IDLoc;
+    }
+    
+     public ModelTable(String IDReservation, String Lastname, String Brand, String Location, String Amount){
+        this.IDReservation = IDReservation;
+        this.Lastname = Lastname;
+        this.Brand = Brand;
+        this.Location = Location;
+        this.Amount = Amount;
     }
     
     public String getIDReservation(){
@@ -27,6 +38,38 @@ public class ModelTable {
     
     public void setIDReservation(String IDReservation){
         this.IDReservation= IDReservation;
+    }
+    
+    public String getLastname(){
+        return Lastname;
+    }
+    
+    public void setLastname(String Lastname){
+        this.Lastname= Lastname;
+    }
+    
+    public String getBrand(){
+        return Brand;
+    }
+    
+    public void setBrand(String Brand){
+        this.Brand= Brand;
+    }
+    
+    public String getLocation(){
+        return Location;
+    }
+    
+    public void setLocation(String Location){
+        this.Location= Location;
+    }
+    
+    public String getAmount(){
+        return Amount;
+    }
+    
+    public void setAmount(String Amount){
+        this.Amount= Amount;
     }
     
     public String getIDCar(){
@@ -43,14 +86,6 @@ public class ModelTable {
     
     public void setIDCus(String IDCus){
         this.IDCus= IDCus;
-    }
-    
-    public String getAmount(){
-        return Amount;
-    }
-    
-    public void setAmount(String Amount){
-        this.Amount= Amount;
     }
     
     public String getIDLoc(){

@@ -28,7 +28,7 @@
                <VBox.margin>
                   <Insets bottom="10.0" top="50.0" />
                </VBox.margin></ImageView>
-            <Label text="Hendrik Höwing" textFill="#e7e5e5">
+            <Label fx:id="labelUser" text="Hendrik Höwing" textFill="#e7e5e5">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
@@ -132,7 +132,7 @@
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
                <children>
-                  <TextField fx:id="filterField" layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <TextField fx:id="filterField" layoutX="590.0" layoutY="47.0" onAction="#searchBarOnAction" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; -fx-text-fill: #e7e5e5;" />
                   <Label layoutX="57.0" layoutY="25.0" text="Car rents" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
@@ -196,13 +196,13 @@
                   </HBox>
                   <ScrollPane layoutX="14.0" layoutY="178.0" prefHeight="374.0" prefWidth="746.0" style="-fx-background-color: #02030A;" stylesheets="@style.css">
                      <content>
-                        <TableView fx:id="tableTableview" onMouseClicked="#checkTableClick" prefHeight="374.0" prefWidth="730.0" style="-fx-background-color: #02030A;" stylesheets="@style.css">
+                        <TableView fx:id="tableTableview" onMousePressed="#checkTableClick" onSort="#checkTableClick" prefHeight="374.0" prefWidth="730.0" style="-fx-background-color: #02030A;" stylesheets="@style.css">
                           <columns>
                             <TableColumn fx:id="tableColumnOrderID" prefWidth="146.0" text="OrderID" />
-                            <TableColumn fx:id="tableColumnFirstname" minWidth="0.0" prefWidth="146.0" text="Lastname" />
-                              <TableColumn fx:id="tableColumnLastname" prefWidth="146.0" text="Brand" />
-                              <TableColumn fx:id="tableColumnModel" minWidth="0.0" prefWidth="155.0" text="Location" />
-                              <TableColumn fx:id="tableColumnLoanLength" prefWidth="137.0" text="Amount" />
+                            <TableColumn fx:id="tableColumnLastname" minWidth="0.0" prefWidth="146.0" text="Lastname" />
+                              <TableColumn fx:id="tableColumnBrand" prefWidth="146.0" text="Brand" />
+                              <TableColumn fx:id="tableColumnLocation" minWidth="0.0" prefWidth="155.0" text="Location" />
+                              <TableColumn fx:id="tableColumnAmount" prefWidth="137.0" text="Amount" />
                           </columns>
                         </TableView>
                      </content>
